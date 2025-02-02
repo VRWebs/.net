@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +8,9 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- Favicon -->
     <link rel="icon" href="VR webs.png" type="image/png">
@@ -26,6 +28,12 @@
             background-color: #0d1117;
             color: #e0e0e0;
             overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.light-mode {
+            background-color: #f4f4f9;
+            color: #333;
         }
 
         a {
@@ -37,7 +45,7 @@
             display: block;
         }
 
-        /* Header pile */
+        /* Header */
         header {
             position: sticky;
             top: 0;
@@ -49,6 +57,11 @@
             align-items: center;
             padding: 10px 40px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s;
+        }
+
+        .light-mode header {
+            background: rgba(255, 255, 255, 0.9);
         }
 
         .header-logo img {
@@ -63,6 +76,7 @@
         nav {
             display: flex;
             gap: 20px;
+            align-items: center;
         }
 
         nav a {
@@ -70,11 +84,29 @@
             font-weight: 600;
             padding: 8px 16px;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .light-mode nav a {
+            color: #333;
         }
 
         nav a:hover {
             background-color: #1f6feb;
+            color: #fff;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #e0e0e0;
+            transition: color 0.3s;
+        }
+
+        .light-mode .theme-toggle {
+            color: #333;
         }
 
         /* Hero Section */
@@ -88,6 +120,11 @@
             background: linear-gradient(to right, #0d1117, rgba(13, 17, 23, 0.8)), url('VR webs (2).png') no-repeat center center/cover;
             color: #ffffff;
             position: relative;
+        }
+
+        .light-mode .hero {
+            background: linear-gradient(to right, #f4f4f9, rgba(244, 244, 249, 0.8)), url('VR webs (2).png') no-repeat center center/cover;
+            color: #333;
         }
 
         .hero::after {
@@ -122,7 +159,7 @@
             border: none;
             border-radius: 30px;
             cursor: pointer;
-            transition: transform  0.3s ease, background 0.3s ease;
+            transition: transform 0.3s ease, background 0.3s ease;
             z-index: 2;
         }
 
@@ -131,7 +168,7 @@
             transform: scale(1.1);
         }
 
-        /* Me HEHEHEHEHEHEHEHEHEHE Section */
+        /* About Section */
         .about {
             display: flex;
             flex-wrap: wrap;
@@ -139,6 +176,11 @@
             justify-content: space-around;
             padding: 80px 20px;
             background: #161b22;
+            transition: background-color 0.3s;
+        }
+
+        .light-mode .about {
+            background: #e0e0e0;
         }
 
         .about img {
@@ -165,11 +207,20 @@
             color: #cfcfcf;
         }
 
-        /* Contact  Section */
+        .light-mode .about .content p {
+            color: #666;
+        }
+
+        /* Contact Section */
         .contact {
             padding: 80px 20px;
             background: #0d1117;
             text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .light-mode .contact {
+            background: #f4f4f9;
         }
 
         .contact h2 {
@@ -192,6 +243,12 @@
             background: #161b22;
             color: #ffffff;
             font-size: 1rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .light-mode .contact input, .light-mode .contact textarea {
+            background: #e0e0e0;
+            color: #333;
         }
 
         .contact input:focus, .contact textarea:focus {
@@ -222,6 +279,12 @@
             padding: 20px 0;
             color: #cfcfcf;
             font-size: 0.9rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .light-mode footer {
+            background: #e0e0e0;
+            color: #333;
         }
 
         footer a {
@@ -257,12 +320,15 @@
     <!-- Header -->
     <header>
         <div class="header-logo">
-            <img src="VR webs.png" alt="VR Webs Logo">
+            <img src="VR webs (2).png" alt="VR Webs Logo">
         </div>
         <nav>
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i>
+            </button>
         </nav>
     </header>
 
@@ -287,13 +353,11 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <h2>Contact Us</h2>
-        <form action="https://usebasin.com/f/2a15db597420" method="POST" >
+        <form action="https://formsubmit.co/kothakotavarunraju55@gmail.com" method="POST">
             <input type="text" placeholder="Your Name" required>
             <input type="email" placeholder="Your Email" required>
             <textarea placeholder="Your Message" rows="5" required></textarea>
             <button type="submit">Send Message</button>
-        
-
         </form>
     </section>
 
@@ -301,5 +365,20 @@
     <footer>
         <p>&copy; 2024 VR Webs. All Rights Reserved. <a href="privacy.html">Privacy Policy</a></p>
     </footer>
+
+    <script>
+        // Light/Dark Mode Toggle
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const themeToggle = document.querySelector('.theme-toggle i');
+            if (document.body.classList.contains('light-mode')) {
+                themeToggle.classList.remove('fa-moon');
+                themeToggle.classList.add('fa-sun');
+            } else {
+                themeToggle.classList.remove('fa-sun');
+                themeToggle.classList.add('fa-moon');
+            }
+        }
+    </script>
 </body>
 </html>
